@@ -5,20 +5,18 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class UserLoginRequest
+ * Class UserRegisterRequest
  *
- * Handles validation for user login requests.
+ * Handles validation for user registration.
  *
  * @package App\Http\Requests
  */
-class UserLoginRequest extends FormRequest
+class UserRegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
-     * Always returns true for login requests.
-     *
-     * @return bool True if the request is authorized.
+     * @return bool True if the user is authorized.
      */
     public function authorize(): bool
     {
@@ -29,12 +27,12 @@ class UserLoginRequest extends FormRequest
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     *         The validation rules for email and password fields.
+     * An array of validation rules for email and password.
      */
     public function rules(): array
     {
         return [
-            'email' => 'required|string|email|max:255|exists:users,email',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|string',
         ];
     }

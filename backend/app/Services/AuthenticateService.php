@@ -10,7 +10,7 @@ use App\Models\User;
 /**
  * Class AuthenticateService
  *
- * Handles user authentication logic.
+ * Handles user authentication and registration logic.
  *
  * @package App\Services
  */
@@ -47,5 +47,16 @@ class AuthenticateService
             'access_token' => $token,
             'user' => $user,
         ];
+    }
+
+    /**
+     * Register a new user with the given credentials.
+     *
+     * @param array<string, mixed> $credentials User data, typically including 'email' and 'password'.
+     * @return User The newly created user.
+     */
+    public function register(array $credentials): User
+    {
+        return $this->userRepository->create($credentials);
     }
 }
