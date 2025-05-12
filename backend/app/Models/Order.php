@@ -18,6 +18,7 @@ class Order extends Model
         'weight',
         'price_per_gram',
         'status',
+        'remaining_weight'
     ];
 
     /**

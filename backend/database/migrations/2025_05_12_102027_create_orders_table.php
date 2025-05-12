@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('type', ['buy', 'sell']);
             $table->decimal('weight', 10, 2)->comment('Weight in grams');
             $table->decimal('price_per_gram', 20, 2)->comment('Price per gram');
+            $table->decimal('remaining_weight', 10, 4);
             $table->enum('status', ['open', 'partially_filled', 'filled', 'cancelled'])->default('open');
             $table->timestamps();
         });
