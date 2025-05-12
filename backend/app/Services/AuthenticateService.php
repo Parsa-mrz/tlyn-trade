@@ -57,6 +57,8 @@ class AuthenticateService
      */
     public function register(array $credentials): User
     {
-        return $this->userRepository->create($credentials);
+        $user = $this->userRepository->create($credentials);
+        $user->wallet ()->create();
+        return $user;
     }
 }
