@@ -5,23 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Wallet extends Model
+
+class Order extends Model
 {
     /**
      * The attributes that are mass assignable.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'user_id',
-        'gold_balance',
-        'rial_balance'
+        'type',
+        'weight',
+        'price_per_gram',
+        'status',
     ];
 
     /**
-     * Get the user associated with the wallet.
-     *
-     * This relationship defines the user to whom the wallet belongs.
+     * Get the user that owns the order.
      *
      * @return BelongsTo
      */
