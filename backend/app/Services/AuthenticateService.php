@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Repositories\UserRepository;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Auth;
@@ -17,10 +18,10 @@ class AuthenticateService
     /**
      * AuthenticateService constructor.
      *
-     * @param  UserRepository  $userRepository  Repository for accessing user data.
+     * @param  UserRepositoryInterface  $userRepository  Repository for accessing user data.
      */
     public function __construct(
-        protected UserRepository $userRepository
+        protected UserRepositoryInterface $userRepository
     ) {}
 
     /**
