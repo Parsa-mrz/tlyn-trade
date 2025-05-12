@@ -2,24 +2,22 @@
 
 namespace App\Services;
 
+use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 
 /**
  * Class AuthenticateService
  *
  * Handles user authentication and registration logic.
- *
- * @package App\Services
  */
 class AuthenticateService
 {
     /**
      * AuthenticateService constructor.
      *
-     * @param UserRepository $userRepository Repository for accessing user data.
+     * @param  UserRepository  $userRepository  Repository for accessing user data.
      */
     public function __construct(
         protected UserRepository $userRepository
@@ -28,14 +26,14 @@ class AuthenticateService
     /**
      * Attempt to authenticate a user with the given credentials.
      *
-     * @param array<string, string> $credentials Array containing 'email' and 'password'.
+     * @param  array<string, string>  $credentials  Array containing 'email' and 'password'.
      * @return array{access_token: string, user: User} The authenticated user and their access token.
      *
      * @throws AuthenticationException If authentication fails.
      */
     public function authenticate(array $credentials): array
     {
-        if (!Auth::attempt($credentials)) {
+        if (! Auth::attempt($credentials)) {
             throw new AuthenticationException('Invalid credentials.');
         }
 
@@ -52,13 +50,14 @@ class AuthenticateService
     /**
      * Register a new user with the given credentials.
      *
-     * @param array<string, mixed> $credentials User data, typically including 'email' and 'password'.
+     * @param  array<string, mixed>  $credentials  User data, typically including 'email' and 'password'.
      * @return User The newly created user.
      */
     public function register(array $credentials): User
     {
         $user = $this->userRepository->create($credentials);
-        $user->wallet ()->create();
+        $user->wallet()->create();
+
         return $user;
     }
 }

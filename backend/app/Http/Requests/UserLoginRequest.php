@@ -8,8 +8,6 @@ use Illuminate\Foundation\Http\FormRequest;
  * Class UserLoginRequest
  *
  * Handles validation for user login requests.
- *
- * @package App\Http\Requests
  */
 class UserLoginRequest extends FormRequest
 {
@@ -29,7 +27,7 @@ class UserLoginRequest extends FormRequest
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     *         The validation rules for email and password fields.
+     *                                                                                            The validation rules for email and password fields.
      */
     public function rules(): array
     {

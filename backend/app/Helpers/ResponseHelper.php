@@ -19,7 +19,7 @@ class ResponseHelper
      * @param  string  $message  The success message.
      * @param  mixed|null  $data  The data to include in the response. Default is null.
      * @param  int  $status  The HTTP status code, using Symfony's Response constants. Default is Response::HTTP_OK.
-     * @return  JsonResponse formatted response.
+     * @return JsonResponse formatted response.
      */
     public static function success(string $message, $data = null, int $status = Response::HTTP_OK): JsonResponse
     {
@@ -27,8 +27,8 @@ class ResponseHelper
             'success' => true,
             'message' => $message,
             'data' => $data,
-            
-        ],$status);
+
+        ], $status);
     }
 
     /**
@@ -41,10 +41,10 @@ class ResponseHelper
      */
     public static function error(string $message, $errors = null, int $status = Response::HTTP_BAD_REQUEST): JsonResponse
     {
-        return response ()->json( [
+        return response()->json([
             'success' => false,
             'message' => $message,
             'errors' => $errors,
-        ],$status);
+        ], $status);
     }
 }

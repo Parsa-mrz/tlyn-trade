@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('wallets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->decimal ('gold_balance')->default(0)->comment ('Gold balance in grams');
-            $table->bigInteger ('rial_balance')->default(0)->comment ('Rial balance in Iranian Rials');
+            $table->decimal('gold_balance')->default(0)->comment('Gold balance in grams');
+            $table->bigInteger('rial_balance')->default(0)->comment('Rial balance in Iranian Rials');
             $table->timestamps();
         });
     }

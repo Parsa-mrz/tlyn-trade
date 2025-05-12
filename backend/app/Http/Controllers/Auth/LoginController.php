@@ -11,15 +11,13 @@ use App\Services\AuthenticateService;
  * Class LoginController
  *
  * Handles user authentication (login).
- *
- * @package App\Http\Controllers\Auth
  */
 class LoginController
 {
     /**
      * LoginController constructor.
      *
-     * @param AuthenticateService $authenticateService The service responsible for authenticating users.
+     * @param  AuthenticateService  $authenticateService  The service responsible for authenticating users.
      */
     public function __construct(
         protected AuthenticateService $authenticateService,
@@ -30,7 +28,7 @@ class LoginController
      *
      * Authenticates the user and returns a success response with token and user info.
      *
-     * @param UserLoginRequest $request The validated login request.
+     * @param  UserLoginRequest  $request  The validated login request.
      * @return \Illuminate\Http\JsonResponse The success response containing token and user data.
      */
     public function login(UserLoginRequest $request)

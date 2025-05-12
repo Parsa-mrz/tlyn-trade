@@ -10,7 +10,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *
  * Transforms a User model into a JSON representation.
  *
- * @package App\Http\Resources
  *
  * @property-read int $id
  * @property-read string $name
@@ -23,14 +22,14 @@ class UserResource extends JsonResource
      *
      * This method is called when converting the resource to JSON.
      *
-     * @param \Illuminate\Http\Request $request The current HTTP request instance.
+     * @param  \Illuminate\Http\Request  $request  The current HTTP request instance.
      * @return array<string, mixed> An array representation of the User resource.
      */
     public function toArray(Request $request): array
     {
         return [
-            'id'    => $this->resource->id,
-            'name'  => $this->resource->name,
+            'id' => $this->resource->id,
+            'name' => $this->resource->name,
             'email' => $this->resource->email,
         ];
     }

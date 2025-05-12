@@ -15,15 +15,13 @@ class Wallet extends Model
     protected $fillable = [
         'user_id',
         'gold_balance',
-        'rial_balance'
+        'rial_balance',
     ];
 
     /**
      * Get the user associated with the wallet.
      *
      * This relationship defines the user to whom the wallet belongs.
-     *
-     * @return BelongsTo
      */
     public function user(): BelongsTo
     {

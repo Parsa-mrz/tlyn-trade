@@ -12,15 +12,13 @@ use App\Services\AuthenticateService;
  * Class RegisterController
  *
  * Handles user registration requests.
- *
- * @package App\Http\Controllers\Auth
  */
 class RegisterController extends Controller
 {
     /**
      * RegisterController constructor.
      *
-     * @param AuthenticateService $authenticateService The service responsible for user registration and authentication.
+     * @param  AuthenticateService  $authenticateService  The service responsible for user registration and authentication.
      */
     public function __construct(
         protected AuthenticateService $authenticateService,
@@ -31,7 +29,7 @@ class RegisterController extends Controller
      *
      * Registers the user and returns a formatted response with user data.
      *
-     * @param UserRegisterRequest $request The validated registration request.
+     * @param  UserRegisterRequest  $request  The validated registration request.
      * @return \Illuminate\Http\JsonResponse A success response containing the registered user data.
      */
     public function register(UserRegisterRequest $request)
