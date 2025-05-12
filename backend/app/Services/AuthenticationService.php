@@ -4,19 +4,19 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use App\Repositories\UserRepository;
+use App\Services\Interfaces\AuthenticationServiceInterface;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Class AuthenticateService
+ * Class AuthenticationService
  *
  * Handles user authentication and registration logic.
  */
-class AuthenticateService
+class AuthenticationService implements AuthenticationServiceInterface
 {
     /**
-     * AuthenticateService constructor.
+     * AuthenticationService constructor.
      *
      * @param  UserRepositoryInterface  $userRepository  Repository for accessing user data.
      */

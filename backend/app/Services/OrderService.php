@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Order;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
+use App\Services\Interfaces\OrderServiceInterface;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\DB;
  *
  * Responsible for handling operations related to placing and matching orders.
  */
-class OrderService
+class OrderService implements OrderServiceInterface
 {
     /**
      * Constructor for the OrderService.

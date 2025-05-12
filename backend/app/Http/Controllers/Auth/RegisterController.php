@@ -6,7 +6,8 @@ use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRegisterRequest;
 use App\Http\Resources\UserResource;
-use App\Services\AuthenticateService;
+use App\Services\AuthenticationService;
+use App\Services\Interfaces\AuthenticationServiceInterface;
 
 /**
  * Class RegisterController
@@ -18,10 +19,10 @@ class RegisterController extends Controller
     /**
      * RegisterController constructor.
      *
-     * @param  AuthenticateService  $authenticateService  The service responsible for user registration and authentication.
+     * @param  AuthenticationServiceInterface  $authenticateService  The service responsible for user registration and authentication.
      */
     public function __construct(
-        protected AuthenticateService $authenticateService,
+        protected AuthenticationServiceInterface $authenticateService,
     ) {}
 
     /**

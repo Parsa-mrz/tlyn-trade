@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Helpers\ResponseHelper;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Resources\UserResource;
-use App\Services\AuthenticateService;
+use App\Services\AuthenticationService;
+use App\Services\Interfaces\AuthenticationServiceInterface;
 
 /**
  * Class LoginController
@@ -17,10 +18,10 @@ class LoginController
     /**
      * LoginController constructor.
      *
-     * @param  AuthenticateService  $authenticateService  The service responsible for authenticating users.
+     * @param  AuthenticationServiceInterface  $authenticateService  The service responsible for authenticating users.
      */
     public function __construct(
-        protected AuthenticateService $authenticateService,
+        protected AuthenticationServiceInterface $authenticateService,
     ) {}
 
     /**
