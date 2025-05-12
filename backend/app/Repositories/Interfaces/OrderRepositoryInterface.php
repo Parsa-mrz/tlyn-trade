@@ -40,12 +40,4 @@ interface OrderRepositoryInterface
      * @return void
      */
     public function updateRemainingWeight(Order $order, float $newWeight): void;
-
-    /**
-     * Mark the given order as filled.
-     *
-     * @param Order $order The order to mark as filled.
-     * @return void
-     */
-    public function markAsFilled(Order $order): void;
 }

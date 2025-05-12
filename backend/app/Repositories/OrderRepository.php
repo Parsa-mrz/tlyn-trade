@@ -57,17 +57,4 @@ class OrderRepository implements OrderRepositoryInterface
         $order->status = $newWeight == 0 ? 'filled' : 'partially_filled';
         $order->save();
     }
-
-    /**
-     * Mark the given order as filled.
-     *
-     * @param Order $order The order to mark as filled.
-     * @return void
-     */
-    public function markAsFilled(Order $order): void
-    {
-        $order->remaining_weight = 0;
-        $order->status = 'filled';
-        $order->save();
-    }
 }
