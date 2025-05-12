@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Helpers\ResponseHelper;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRegisterRequest;
 use App\Http\Resources\UserResource;
-use App\Services\AuthenticationService;
 use App\Services\Interfaces\AuthenticationServiceInterface;
 
 /**
@@ -14,7 +12,7 @@ use App\Services\Interfaces\AuthenticationServiceInterface;
  *
  * Handles user registration requests.
  */
-class RegisterController extends Controller
+class RegisterController
 {
     /**
      * RegisterController constructor.
