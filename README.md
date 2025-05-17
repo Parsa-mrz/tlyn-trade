@@ -26,3 +26,14 @@ git clone https://github.com/Parsa-mrz/tlyn-trade.git
 cd tlyn-trade
 make up
 ```
+
+## 📚 API Documentation
+ ```
+ http://localhost/docs/api
+ ```
+
+## 📄 Code Documentation
+Open the following file in your browser:
+```
+tlyn-trade/Dcoument/index.html
+```
