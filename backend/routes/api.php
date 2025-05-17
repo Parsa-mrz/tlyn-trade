@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Order\OrderController;
+use App\Http\Controllers\Wallet\WalletController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +19,5 @@ Route::prefix('auth')->group(function () {
 
 Route::middleware('auth:sanctum')->group(function () {
    Route::post ('orders', [OrderController::class, 'store']);
+   Route::get('wallet/{user}',[WalletController::class,'show']);
 });
