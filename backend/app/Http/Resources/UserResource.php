@@ -10,10 +10,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *
  * Transforms a User model into a JSON representation.
  *
- *
- * @property-read int $id
- * @property-read string $name
- * @property-read string $email
+ * @package App\Http\Resources
  */
 class UserResource extends JsonResource
 {

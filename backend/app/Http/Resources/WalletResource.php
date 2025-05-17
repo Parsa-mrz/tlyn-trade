@@ -12,7 +12,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *
  * @package App\Http\Resources
  *
- * @property-read \App\Models\Wallet $resource
  */
 class WalletResource extends JsonResource
 {

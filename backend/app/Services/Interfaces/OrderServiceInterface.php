@@ -4,6 +4,7 @@ namespace App\Services\Interfaces;
 
 use App\DTOs\OrderDTO;
 use App\Models\Order;
+use App\Models\User;
 
 /**
  * Interface OrderServiceInterface

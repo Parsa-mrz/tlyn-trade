@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Order;
+use App\Models\User;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
 use Illuminate\Support\Collection;
 
@@ -57,4 +58,16 @@ class OrderRepository implements OrderRepositoryInterface
         $order->status = $newWeight == 0 ? 'filled' : 'partially_filled';
         $order->save();
     }
+
+    /**
+     * Get all orders associated with a specific user.
+     *
+     * @param User $user The user whose orders should be retrieved.
+     * @return Collection<int, Order> A collection of the user's orders.
+     */
+    public function getAllOrders(User $user): Collection
+    {
+        return $user->orders()->orderBy('created_at')->get();
+    }
+
 }

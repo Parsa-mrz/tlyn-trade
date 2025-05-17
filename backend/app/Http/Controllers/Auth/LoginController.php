@@ -12,6 +12,8 @@ use App\Services\Interfaces\AuthenticationServiceInterface;
  * Class LoginController
  *
  * Handles user authentication (login).
+ *
+ * @package App\Http\Controllers\Auth
  */
 class LoginController
 {

@@ -6,7 +6,9 @@ use App\DTOs\OrderDTO;
 use App\Exceptions\InsufficientBalanceException;
 use App\Helpers\ResponseHelper;
 use App\Http\Requests\StoreOrderRequest;
+use App\Http\Resources\OrderResource;
 use App\Models\User;
+use App\Repositories\Interfaces\OrderRepositoryInterface;
 use App\Services\Interfaces\OrderServiceInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +17,9 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class OrderController
  *
- * Handles HTTP requests related to orders.
+ * Handles HTTP requests related to user orders, such as creating and listing them.
+ *
+ * @package App\Http\Controllers\Order
  */
 class OrderController
 {
@@ -30,10 +34,32 @@ class OrderController
      * OrderController constructor.
      *
      * @param OrderServiceInterface $orderService Service to handle order operations.
+     * @param OrderRepositoryInterface $orderRepository Repository to interact with orders in the database.
      */
     public function __construct(
-        protected OrderServiceInterface $orderService
+        protected OrderServiceInterface $orderService,
+        protected OrderRepositoryInterface $orderRepository
     ) {
+    }
+
+    /**
+     * Display a listing of the authenticated user's orders.
+     *
+     * @return JsonResponse JSON response containing order data or an error message.
+     */
+    public function index ()
+    {
+        /**@var User $user */
+        $user = Auth::user();
+
+        $orders = $this->orderRepository->getAllOrders($user);
+        if($orders->isEmpty()) {
+            return ResponseHelper::error ('No orders found',null,Response::HTTP_NOT_FOUND);
+        }
+        return ResponseHelper::success (
+            'Orders Retrieved Successfully',
+            OrderResource::collection($orders)
+        );
     }
 
     /**

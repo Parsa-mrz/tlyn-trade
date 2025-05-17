@@ -11,6 +11,8 @@ use App\Services\Interfaces\AuthenticationServiceInterface;
  * Class RegisterController
  *
  * Handles user registration requests.
+ *
+ * @package App\Http\Controllers\Auth
  */
 class RegisterController
 {

@@ -3,6 +3,7 @@
 namespace App\Repositories\Interfaces;
 
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Support\Collection;
 
 /**
@@ -40,4 +41,12 @@ interface OrderRepositoryInterface
      * @return void
      */
     public function updateRemainingWeight(Order $order, float $newWeight): void;
+
+    /**
+     * Get all orders associated with a specific user.
+     *
+     * @param User $user The user whose orders should be retrieved.
+     * @return Collection<int, Order> A collection of the user's orders.
+     */
+    public function getAllOrders(User $user): Collection;
 }

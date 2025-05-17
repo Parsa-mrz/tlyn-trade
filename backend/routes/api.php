@@ -19,5 +19,6 @@ Route::prefix('auth')->group(function () {
 
 Route::middleware('auth:sanctum')->group(function () {
    Route::post ('orders', [OrderController::class, 'store']);
+   Route::get('orders', [OrderController::class, 'index']);
    Route::get('wallet/{user}',[WalletController::class,'show']);
 });
