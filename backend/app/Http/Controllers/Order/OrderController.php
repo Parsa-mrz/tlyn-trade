@@ -99,7 +99,15 @@ class OrderController
         }
     }
 
-    public function cancel (Order $order)
+    /**
+     * Cancel a given order after checking authorization.
+     *
+     * Only the user who placed the order or an authorized admin can cancel it.
+     *
+     * @param Order $order The order model bound via route-model binding.
+     * @return JsonResponse JSON response indicating the result of the cancellation.
+     */
+    public function cancel (Order $order): JsonResponse
     {
         $this->authorize('cancel', $order);
         $this->orderRepository->update ($order,[
