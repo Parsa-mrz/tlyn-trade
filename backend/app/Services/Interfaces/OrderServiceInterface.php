@@ -2,6 +2,7 @@
 
 namespace App\Services\Interfaces;
 
+use App\DTOs\OrderDTO;
 use App\Models\Order;
 
 /**
@@ -17,5 +18,5 @@ interface OrderServiceInterface
      * @param array $data The data required to create and process the order.
      * @return Order The newly created Order instance.
      */
-    public function placeOrder(array $data): Order;
+    public function placeOrder(OrderDTO $dto): Order;
 }

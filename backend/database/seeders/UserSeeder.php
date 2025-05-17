@@ -40,13 +40,13 @@ class UserSeeder extends Seeder
         ];
 
         foreach ($users as $userData) {
-            $user = User::create([
+            $user = User::updateOrCreate([
                 'name' => $userData['name'],
                 'email' => $userData['email'],
                 'password' => Hash::make($userData['password']),
             ]);
 
-            $user->wallet()->create([
+            $user->wallet()->updateOrCreate([
                 'gold_balance' => $userData['gold_balance'],
                 'rial_balance' => $userData['rial_balance'],
             ]);
