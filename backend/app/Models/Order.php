@@ -19,7 +19,8 @@ class Order extends Model
         'weight',
         'price_per_gram',
         'status',
-        'remaining_weight'
+        'remaining_weight',
+        'cancelled_at',
     ];
 
     /**
@@ -30,6 +31,9 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Get the transactions that own the order.
+     */
     public function transactions (): HasMany
     {
         return $this->hasMany(Transaction::class);

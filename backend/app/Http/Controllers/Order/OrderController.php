@@ -7,9 +7,11 @@ use App\Exceptions\InsufficientBalanceException;
 use App\Helpers\ResponseHelper;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Resources\OrderResource;
+use App\Models\Order;
 use App\Models\User;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
 use App\Services\Interfaces\OrderServiceInterface;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +25,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class OrderController
 {
+    use AuthorizesRequests;
     /**
      * Default gold price per gram.
      *
@@ -94,5 +97,16 @@ class OrderController
         } catch (\Throwable $e) {
             return ResponseHelper::error('Unexpected error occurred', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
+    }
+
+    public function cancel (Order $order)
+    {
+        $this->authorize('cancel', $order);
+        $this->orderRepository->update ($order,[
+            'status' => 'cancelled',
+            'cancelled_at' => now()
+        ]);
+
+        return ResponseHelper::success('Order cancelled successfully');
     }
 }

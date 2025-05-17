@@ -70,4 +70,15 @@ class OrderRepository implements OrderRepositoryInterface
         return $user->orders()->with('transactions')->orderBy('created_at')->get();
     }
 
+    /**
+     * Update the specified order with the provided data.
+     *
+     * @param Order $order The order instance to update.
+     * @param array<string, mixed> $data The data to update the order with.
+     * @return bool True if the update was successful, false otherwise.
+     */
+    public function update ( Order $order, array $data ): bool
+    {
+        return $order->update($data);
+    }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Order;
 use App\Models\Wallet;
+use App\Policies\OrderPolicy;
 use App\Policies\WalletPolicy;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
@@ -41,5 +43,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::policy(Wallet::class,WalletPolicy::class);
+        Gate::policy(Order::class,OrderPolicy::class);
     }
 }
