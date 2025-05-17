@@ -88,7 +88,7 @@ class OrderController
         try {
             $this->orderService->validateUserBalance($dto);
             $order = $this->orderService->placeOrder($dto);
-            return ResponseHelper::success('Order created successfully', $order);
+            return ResponseHelper::success('Order created successfully', new OrderResource($order));
         } catch (InsufficientBalanceException $e) {
             return ResponseHelper::error($e->getMessage(), null, Response::HTTP_UNPROCESSABLE_ENTITY);
         } catch (\Throwable $e) {

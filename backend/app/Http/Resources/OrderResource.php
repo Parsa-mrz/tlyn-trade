@@ -24,12 +24,13 @@ class OrderResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'user' => $this->whenLoaded('user'),
+            'user' => new UserResource($this->whenLoaded('user')),
             'type' => $this->resource->type,
             'weight' => $this->resource->weight,
             'price_per_gram' => $this->resource->price_per_gram,
             'remaining_weight' => $this->resource->remaining_weight,
             'status' => $this->resource->status,
+            'transactions' => TransactionResource::collection($this->whenLoaded('transactions')),
         ];
     }
 }

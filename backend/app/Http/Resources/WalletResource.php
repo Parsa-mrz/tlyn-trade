@@ -25,9 +25,9 @@ class WalletResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'user' => $this->whenLoaded('user'),
             'gold_balance' => $this->resource->gold_balance,
             'rial_balance' => number_format($this->resource->rial_balance),
+            'user' => new UserResource($this->whenLoaded('user')),
         ];
     }
 }

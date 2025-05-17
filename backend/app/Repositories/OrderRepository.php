@@ -67,7 +67,7 @@ class OrderRepository implements OrderRepositoryInterface
      */
     public function getAllOrders(User $user): Collection
     {
-        return $user->orders()->orderBy('created_at')->get();
+        return $user->orders()->with('transactions')->orderBy('created_at')->get();
     }
 
 }

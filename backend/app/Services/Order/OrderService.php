@@ -5,6 +5,7 @@ namespace App\Services\Order;
 use App\DTOs\OrderDTO;
 use App\Exceptions\InsufficientBalanceException;
 use App\Models\Order;
+use App\Models\Transaction;
 use App\Models\User;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
 use App\Services\Interfaces\OrderServiceInterface;
@@ -73,6 +74,17 @@ class OrderService implements OrderServiceInterface
                     weight: $matchedWeight,
                     commission: $commission
                 );
+
+                Transaction::create([
+                    'buyer_id'        => $order->type === 'buy' ? $order->user_id : $match->user_id,
+                    'seller_id'       => $order->type === 'sell' ? $order->user_id : $match->user_id,
+                    'order_id'        => $order->id,
+                    'match_order_id'  => $match->id,
+                    'weight'          => $matchedWeight,
+                    'price_per_gram'  => $price,
+                    'total_price'     => $totalPrice,
+                    'commission'      => $commission,
+                ]);
 
                 $this->orderRepository->updateRemainingWeight($match, $match->remaining_weight - $matchedWeight);
                 $match->refresh();
